@@ -1,5 +1,6 @@
 import { Panier } from "../models/index.js";
 import { Utilisateur } from "../models/index.js";
+import jwt from 'jsonwebtoken'
 
 
 export const addItem = async(req,res)=>{
@@ -31,11 +32,31 @@ export const addItem = async(req,res)=>{
         if(!user){
             res.status(404).json({message:'utilisateur non existant'})
         }
+        
 
-        const new_panier = await Panier.create({
-            id
+        const elementNonVerifieExiste = await Panier.findOne({
+            where: { 
+                utilisateurId: id,
+                valider: false 
+            }
         });
-        res.status(201).json(new_panier);
+        
+          
+          // Retourne true si un élément non vérifié est trouvé, sinon false
+          const resultat = !!elementNonVerifieExiste;
+          
+          console.log(resultat)
+          if (!resultat){
+            const new_panier = await Panier.create({utilisateurId:
+                id
+            });
+            res.status(201).json(new_panier);
+          }
+          else{
+            res.status(404).json({message:'il y a deja un panier non valider'})
+          }
+
+        
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -125,6 +146,7 @@ export const deletItemById=async(req,res)=>{
         }
         
         await item.destroy()
+        res.json({ message: "Produit mis à jour avec succès."});
 
     } catch (error) {
         res.status(500).json({ error: error.message });
