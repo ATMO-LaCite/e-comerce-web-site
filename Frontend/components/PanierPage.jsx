@@ -235,7 +235,7 @@ Total:{total.toFixed(2)} $
             {erreurs.cvv && <div className="text-danger">{erreurs.cvv}</div>}
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-danger" onClick={async()=>{await viderPanier(a); window.location.href='/panier'}} >Vider</button>
+            <button type="button" className="btn btn-danger me-2" onClick={async()=>{await viderPanier(a); window.location.href='/panier'}} >Vider</button>
             <button type="submit" className="btn btn-primary">Payer</button>
           </div>
         </form>

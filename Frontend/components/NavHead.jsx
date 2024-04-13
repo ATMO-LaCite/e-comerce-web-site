@@ -34,6 +34,7 @@ export const NavHead = () => {
           <li><a href="/menu">MENU</a></li>
           <li><a href="/commande">COMMANDE</a></li>
           <li><a href="/panier">PANIER</a></li>
+          <li><a href="/historique">HISTORIQUE</a></li>
           <li><a href="/connexion" onClick={() => localStorage.clear()}>DECONNEXION</a></li>
         </ul>
       );

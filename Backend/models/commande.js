@@ -1,9 +1,8 @@
-import {  DataTypes } from "sequelize";
-import {database} from '../connexion.js'
+import { DataTypes } from "sequelize";
+import { database } from "../connexion.js";
 
-export const Commande=database.define('commande',{
-    description: { type: DataTypes.STRING },
-    total:{type:DataTypes.DECIMAL},
-    
-    
-})
+export const Commande = database.define("commande", {
+  description: { type: DataTypes.STRING },
+  total: { type: DataTypes.DECIMAL },
+  panierId: { type: DataTypes.INTEGER },
+});

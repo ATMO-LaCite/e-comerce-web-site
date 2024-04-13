@@ -42,6 +42,7 @@ export const Dropdown = () => {
             <a href="/menu" className="text-warning">MENU</a>
             <a href="/commande" className="text-warning">COMMANDE</a>
             <a href="/panier" className="text-warning">PANIER</a>
+            <a href="/historique" className="text-warning">HISTORIQUE</a>
             <a href="/connexion" className="text-warning" onClick={() => {localStorage.clear(); window.location.href='/connexion';}}>DECONNEXION</a>
           </div>
         </div>
